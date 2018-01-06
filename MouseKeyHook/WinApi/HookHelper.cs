@@ -1,4 +1,4 @@
-﻿// This code is distributed under MIT license. 
+﻿// This code is distributed under MIT license.
 // Copyright (c) 2015 George Mamaladze
 // See license.txt or http://opensource.org/licenses/mit-license.php
 
@@ -14,7 +14,7 @@ namespace Gma.System.MouseKeyHook.WinApi
     {
         static HookProcedure _appHookProc;
         static HookProcedure _globalHookProc;
-        
+
         public static HookResult HookAppMouse(Callback callback)
         {
             return HookApp(HookIds.WH_MOUSE, callback);
@@ -79,7 +79,7 @@ namespace Gma.System.MouseKeyHook.WinApi
                 return CallNextHookEx(nCode, wParam, lParam);
             }
 
-            var callbackData = new CallbackData(wParam, lParam);
+            var callbackData = new CallbackData(wParam, lParam, () => CallNextHookEx(nCode, wParam, lParam));
             var continueProcessing = callback(callbackData);
 
             if (!continueProcessing)

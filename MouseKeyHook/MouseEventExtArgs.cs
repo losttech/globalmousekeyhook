@@ -1,4 +1,4 @@
-﻿// This code is distributed under MIT license. 
+﻿// This code is distributed under MIT license.
 // Copyright (c) 2015 George Mamaladze
 // See license.txt or http://opensource.org/licenses/mit-license.php
 
@@ -25,12 +25,13 @@ namespace Gma.System.MouseKeyHook
         /// <param name="isMouseButtonDown">True if event signals mouse button down.</param>
         /// <param name="isMouseButtonUp">True if event signals mouse button up.</param>
         internal MouseEventExtArgs(MouseButtons buttons, int clicks, Point point, int delta, int timestamp,
-            bool isMouseButtonDown, bool isMouseButtonUp)
+            bool isMouseButtonDown, bool isMouseButtonUp, Action callBase)
             : base(buttons, clicks, point.X, point.Y, delta)
         {
             IsMouseButtonDown = isMouseButtonDown;
             IsMouseButtonUp = isMouseButtonUp;
             Timestamp = timestamp;
+            this.CallBase = callBase;
         }
 
         /// <summary>
@@ -77,6 +78,11 @@ namespace Gma.System.MouseKeyHook
             get { return new Point(X, Y); }
         }
 
+        /// <summary>
+        /// Calls the next hook in the chain.
+        /// </summary>
+        public Action CallBase { get; }
+
         internal static MouseEventExtArgs FromRawDataApp(CallbackData data)
         {
             var wParam = data.WParam;
@@ -84,7 +90,7 @@ namespace Gma.System.MouseKeyHook
 
             AppMouseStruct marshalledMouseStruct =
                 (AppMouseStruct) Marshal.PtrToStructure(lParam, typeof (AppMouseStruct));
-            return FromRawDataUniversal(wParam, marshalledMouseStruct.ToMouseStruct());
+            return FromRawDataUniversal(wParam, marshalledMouseStruct.ToMouseStruct(), data.CallBase);
         }
 
         internal static MouseEventExtArgs FromRawDataGlobal(CallbackData data)
@@ -93,7 +99,7 @@ namespace Gma.System.MouseKeyHook
             var lParam = data.LParam;
 
             MouseStruct marshalledMouseStruct = (MouseStruct) Marshal.PtrToStructure(lParam, typeof (MouseStruct));
-            return FromRawDataUniversal(wParam, marshalledMouseStruct);
+            return FromRawDataUniversal(wParam, marshalledMouseStruct, data.CallBase);
         }
 
         /// <summary>
@@ -102,7 +108,7 @@ namespace Gma.System.MouseKeyHook
         /// <param name="wParam">First Windows Message parameter.</param>
         /// <param name="mouseInfo">A MouseStruct containing information from which to construct MouseEventExtArgs.</param>
         /// <returns>A new MouseEventExtArgs object.</returns>
-        private static MouseEventExtArgs FromRawDataUniversal(IntPtr wParam, MouseStruct mouseInfo)
+        private static MouseEventExtArgs FromRawDataUniversal(IntPtr wParam, MouseStruct mouseInfo, Action callBase)
         {
             MouseButtons button = MouseButtons.None;
             short mouseDelta = 0;
@@ -198,14 +204,15 @@ namespace Gma.System.MouseKeyHook
                 mouseDelta,
                 mouseInfo.Timestamp,
                 isMouseButtonDown,
-                isMouseButtonUp);
+                isMouseButtonUp,
+                callBase);
 
             return e;
         }
 
         internal MouseEventExtArgs ToDoubleClickEventArgs()
         {
-            return new MouseEventExtArgs(Button, 2, Point, Delta, Timestamp, IsMouseButtonDown, IsMouseButtonUp);
+            return new MouseEventExtArgs(Button, 2, Point, Delta, Timestamp, IsMouseButtonDown, IsMouseButtonUp, callBase: null);
         }
     }
 }
