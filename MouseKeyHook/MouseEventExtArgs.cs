@@ -24,6 +24,7 @@ namespace Gma.System.MouseKeyHook
         /// <param name="timestamp">The system tick count when the event occurred.</param>
         /// <param name="isMouseButtonDown">True if event signals mouse button down.</param>
         /// <param name="isMouseButtonUp">True if event signals mouse button up.</param>
+        /// <param name="callBase">The next hoot in the chain to call.</param>
         internal MouseEventExtArgs(MouseButtons buttons, int clicks, Point point, int delta, int timestamp,
             bool isMouseButtonDown, bool isMouseButtonUp, Action callBase)
             : base(buttons, clicks, point.X, point.Y, delta)
@@ -107,6 +108,7 @@ namespace Gma.System.MouseKeyHook
         /// </summary>
         /// <param name="wParam">First Windows Message parameter.</param>
         /// <param name="mouseInfo">A MouseStruct containing information from which to construct MouseEventExtArgs.</param>
+        /// <param name="callBase">The next hoot in the chain to call.</param>
         /// <returns>A new MouseEventExtArgs object.</returns>
         private static MouseEventExtArgs FromRawDataUniversal(IntPtr wParam, MouseStruct mouseInfo, Action callBase)
         {
