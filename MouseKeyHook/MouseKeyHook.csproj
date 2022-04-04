@@ -1,195 +1,44 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
-  <PropertyGroup>
-    <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F52AA97E-180A-40ED-8F2B-09080171D6C7}</ProjectGuid>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>
-    </ApplicationIcon>
-    <AssemblyKeyContainerName>
-    </AssemblyKeyContainerName>
-    <AssemblyName>Gma.System.MouseKeyHook</AssemblyName>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-    <DefaultClientScript>JScript</DefaultClientScript>
-    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
-    <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Gma.System.MouseKeyHook</RootNamespace>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>
-    </StartupObject>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <PublishUrl>http://localhost/GlobalHookDemo/</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile>
-    </ConfigurationOverrideFile>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\XML\MouseKeyboardActivityMonitor.xml</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
-    <FileAlignment>4096</FileAlignment>
-    <NoStdLib>false</NoStdLib>
-    <NoWarn>
-    </NoWarn>
-    <Optimize>false</Optimize>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>full</DebugType>
-    <ErrorReport>prompt</ErrorReport>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>..\..\..\Lost.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile>
-    </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\XML\MouseKeyboardActivityMonitor.xml</DocumentationFile>
-    <DebugSymbols>false</DebugSymbols>
-    <FileAlignment>4096</FileAlignment>
-    <NoStdLib>false</NoStdLib>
-    <NoWarn>
-    </NoWarn>
-    <Optimize>true</Optimize>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>none</DebugType>
-    <ErrorReport>prompt</ErrorReport>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <CodeAnalysisRuleSet>..\..\..\Lost.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System">
-      <Name>System</Name>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Name>System.Windows.Forms</Name>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Implementation\AppKeyListener.cs" />
-    <Compile Include="Implementation\AppMouseListener.cs" />
-    <Compile Include="Implementation\ButtonSet.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Implementation\BaseListener.cs" />
-    <Compile Include="Implementation\Callback.cs" />
-    <Compile Include="Implementation\GlobalKeyListener.cs" />
-    <Compile Include="Implementation\GlobalMouseListener.cs" />
-    <Compile Include="Implementation\AppEventFacade.cs" />
-    <Compile Include="Implementation\EventFacade.cs" />
-    <Compile Include="Implementation\GlobalEventFacade.cs" />
-    <Compile Include="Hook.cs" />
-    <Compile Include="IKeyboardMouseEvents.cs" />
-    <Compile Include="IMouseEvents.cs" />
-    <Compile Include="IKeyboardEvents.cs" />
-    <Compile Include="Implementation\KeyboardState.cs" />
-    <Compile Include="KeyPressEventArgsExt.cs" />
-    <Compile Include="Implementation\Subscribe.cs" />
-    <Compile Include="WinApi\AppMouseStruct.cs" />
-    <Compile Include="WinApi\CallbackData.cs" />
-    <Compile Include="WinApi\HookHelper.cs" />
-    <Compile Include="WinApi\HookIds.cs" />
-    <Compile Include="WinApi\HookNativeMethods.cs" />
-    <Compile Include="WinApi\HookProcedureHandle.cs" />
-    <Compile Include="WinApi\HookResult.cs" />
-    <Compile Include="WinApi\HotkeysNativeMethods.cs" />
-    <Compile Include="WinApi\MouseNativeMethods.cs" />
-    <Compile Include="Implementation\MouseListener.cs" />
-    <Compile Include="WinApi\MouseStruct.cs" />
-    <Compile Include="WinApi\KeyboardHookStruct.cs" />
-    <Compile Include="KeyEventArgsExt.cs" />
-    <Compile Include="WinApi\Point.cs" />
-    <Compile Include="WinApi\HookProcedure.cs" />
-    <Compile Include="Implementation\KeyListener.cs" />
-    <Compile Include="MouseEventExtArgs.cs" />
-    <Compile Include="WinApi\KeyboardNativeMethods.cs" />
-    <Compile Include="WinApi\Messages.cs" />
-    <Compile Include="WinApi\ThreadNativeMethods.cs" />
-    <Compile Include="HotKeys\HotKeyArgs.cs" />
-    <Compile Include="HotKeys\HotKeySet.cs" />
-    <Compile Include="HotKeys\HotKeySetCollection.cs" />
-    <Compile Include="HotKeys\HotKeySetsListener.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MouseKeyHook.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
+		<AssemblyName>Gma.System.MouseKeyHook</AssemblyName>
+		<RootNamespace>Gma.System.MouseKeyHook</RootNamespace>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<VersionPrefix>6.0.0</VersionPrefix>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<Deterministic>False</Deterministic>
+		<UseWindowsForms>True</UseWindowsForms>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>George Mamaladze; Victor Nova</Authors>
+		<Description>
+			This library attaches to windows global hooks, tracks keyboard and mouse clicks and movement and raises common .NET events with KeyEventArgs and MouseEventArgs, so you can easily retrieve any information you need:
+
+			* Mouse coordinates
+			* Mouse buttons clicked
+			* Mouse wheel scrolls
+			* Key presses and releases
+			* Special key states
+
+			Additionally, there is a possibility to supress certain keyboard or mouse clicks, or detect special key combinations.
+		</Description>
+		<PackageTags>keyboard;mouse;hook;event;global;spy</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="System.Windows.Forms">
+			<Name>System.Windows.Forms</Name>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
 </Project>

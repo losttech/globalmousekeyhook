@@ -10,6 +10,6 @@ using System.Runtime.InteropServices;
     AssemblyDescription(
         "This library allows you to tap keyboard and mouse, to detect and record their activity even when an application is inactive and runs in background."
         )]
-[assembly: AssemblyCopyright("(c) George Mamaladze 2000-2014")]
+[assembly: AssemblyCopyright("(c) Lost Tech LLC 2022 (c) George Mamaladze 2000-2014")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("5.4.0")]
+[assembly: AssemblyVersion("6.0.*")]
