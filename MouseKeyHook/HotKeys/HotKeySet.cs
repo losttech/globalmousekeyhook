@@ -59,12 +59,12 @@ namespace Gma.System.MouseKeyHook.HotKeys
         /// <summary>
         ///     Enables the ability to name the set
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Enables the ability to describe what the set is used for or supposed to do
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets the set of hotkeys that this class handles.
@@ -102,26 +102,26 @@ namespace Gma.System.MouseKeyHook.HotKeys
         ///     Called as the user holds down the keys in the set.  It is NOT triggered the first time the keys are set.
         ///     <see cref="OnHotKeysDownOnce" />
         /// </summary>
-        public event HotKeyHandler OnHotKeysDownHold;
+        public event HotKeyHandler? OnHotKeysDownHold;
 
         /// <summary>
         ///     Called whenever the hot key set is no longer active.  This is essentially a KeyPress event, indicating that a full
         ///     key cycle has occurred, only for HotKeys because a single key removed from the set constitutes an incomplete set.
         /// </summary>
-        public event HotKeyHandler OnHotKeysUp;
+        public event HotKeyHandler? OnHotKeysUp;
 
         /// <summary>
         ///     Called the first time the down keys are set.  It does not get called throughout the duration the user holds it but
         ///     only the
         ///     first time it's activated.
         /// </summary>
-        public event HotKeyHandler OnHotKeysDownOnce;
+        public event HotKeyHandler? OnHotKeysDownOnce;
 
         /// <summary>
         ///     General invocation handler
         /// </summary>
         /// <param name="hotKeyDelegate"></param>
-        private void InvokeHotKeyHandler(HotKeyHandler hotKeyDelegate)
+        private void InvokeHotKeyHandler(HotKeyHandler? hotKeyDelegate)
         {
             if (hotKeyDelegate != null)
                 hotKeyDelegate(this, new HotKeyArgs(DateTime.Now));
